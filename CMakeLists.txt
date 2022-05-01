@@ -31,7 +31,11 @@ set(SOURCES
 )
 
 if (WIN32)
-  list(APPEND SOURCES "${wxWidgets_ROOT_DIR}/include/wx/msw/wx.rc")
+  message("rc file=${wxWidgets_ROOT_DIR}/include/wx/msw/wx.rc")
+  #list(APPEND SOURCES "${wxWidgets_ROOT_DIR}/include/wx/msw/wx.rc")
+  # FindwxWidgets can't locate the ${wxWidgets_ROOT_DIR}, instead we use ${wxWidgets_LIBRARY_DIRS}
+  # ${wxWidgets_INCLUDE_DIRS} could also be used, but it contains two dirs, we only need the second dir.
+  list(APPEND SOURCES "${wxWidgets_LIBRARY_DIRS}/../include/wx-3.1/wx/msw/wx.rc")
 endif()
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
