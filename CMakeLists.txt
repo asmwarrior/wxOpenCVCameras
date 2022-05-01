@@ -10,6 +10,9 @@
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 project(wxOpenCVCameras)
 
+set( CMAKE_MESSAGE_LOG_LEVEL "DEBUG" )
+# you have to set variable under msys2, if not, the default wx-config is used and wx 3.0.x is used
+set(wxWidgets_CONFIG_EXECUTABLE "wx-config-3.1")
 find_package(wxWidgets 3.1.0 COMPONENTS core base REQUIRED)
 find_package(OpenCV 4.2 REQUIRED)
 
