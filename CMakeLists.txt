@@ -46,10 +46,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD_REQUIRED YES
 )
 
+# under msys2's wx, there is only a manifest file named:
+# F:\msys2\mingw64\include\wx-3.1\wx\msw\amd64.manifest
+# there is no file named: F:\msys2\mingw64\bin\windres.exe: can't open file `wx/msw/amd64_dpi_aware_pmv2.manifest': No such file or directory
+
 if (WIN32)
   target_compile_definitions(${PROJECT_NAME} PRIVATE
     wxUSE_RC_MANIFEST
-    wxUSE_DPI_AWARE_MANIFEST=2)
+    wxUSE_DPI_AWARE_MANIFEST=0)
   set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE YES)
 
   if (MSVC)
